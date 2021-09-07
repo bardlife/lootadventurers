@@ -1,0 +1,98 @@
+#!/bin/rc
+
+for (a in `{seq 0 9}) {
+    switch ($a) {
+    case 0
+        race='Human'
+    case 1
+        race='Elf'
+    case 2
+        race='Dwarf'
+    case 3
+        race='Halfling'
+    case 4
+        race='Orc'
+    case 5
+        race='Giant'
+    case 6
+        race='Beastfolk'
+    case 7
+        race='Demon'
+    case 8
+        race='Dragon'
+    case 9
+        race='Undead'
+    }
+
+    for (b in `{seq 0 9}) {
+        switch ($b) {
+        case 0
+            class='Warrior'
+            background='#FF0000'
+            fill='#FFFFFF'
+        case 1
+            class='Healer'
+            background='#00FF00'
+            fill='#000000'
+        case 2
+            class='Mage'
+            background='#0000FF'
+            fill='#FFFFFF'
+        case 3
+            class='Rogue'
+            background='#000000'
+            fill='#FFFFFF'
+        case 4
+            class='Ranger'
+            background='#008000'
+            fill='#FFFFFF'
+        case 5
+            class='Paladin'
+            background='#FFFF00'
+            fill='#000000'
+        case 6
+            class='Noble'
+            background='#800080'
+            fill='#FFFFFF'
+        case 7
+            class='Monk'
+            background='#800000'
+            fill='#FFFFFF'
+        case 8
+            class='Artificer'
+            background='#C0C0C0'
+            fill='#000000'
+        case 9
+            class='Bard'
+            background='#FF00FF'
+            fill='#FFFFFF'
+        }
+
+        for (c in `{seq 0 9}) {
+            switch ($c) {
+            case 0
+                alignment='???'
+            case 1
+                alignment='Lawful Good'
+            case 2
+                alignment='Neutral Good'
+            case 3
+                alignment='Chaotic Good'
+            case 4
+                alignment='Lawful Neutral'
+            case 5
+                alignment='True Neutral'
+            case 6
+                alignment='Chaotic Neutral'
+            case 7
+                alignment='Lawful Evil'
+            case 8
+                alignment='Neutral Evil'
+            case 9
+                alignment='Chaotic Evil'
+            }
+
+            echo '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: '$fill'; font-family: serif; font-size: 24px; text-anchor: middle; }</style><rect width="100%" height="100%" fill="'$background'" /><text x="338" y="30" class="base" style="text-anchor: end">#'$a$b$c'</text><text x="50%" y="150" class="base">'$race'</text><text x="50%" y="180" class="base">'$class'</text><text x="50%" y="210" class="base">('$alignment')</text></svg>' > $a$b$c.svg
+        }
+    }
+}
